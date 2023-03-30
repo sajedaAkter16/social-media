@@ -108,10 +108,22 @@ const About = () => {
                 <h3 className="text-xl">Email:</h3>
             </div>
             <div className="bg-slate-300">
-                <h3 className="text-xl">Address:</h3>
+                <h3 className="text-xl">Current Address:</h3>
+            </div>
+            <div className="bg-slate-300">
+                <h3 className="text-xl">Home Address:</h3>
             </div>
             <div className="bg-slate-300">
                 <h3 className="text-xl">University:</h3>
+            </div>
+            <div className="bg-slate-300">
+                <h3 className="text-xl">Gender:</h3>
+            </div>
+            <div className="bg-slate-300">
+                <h3 className="text-xl">Date of birth:</h3>
+            </div>
+            <div className="bg-slate-300">
+                <h3 className="text-xl">Number:</h3>
             </div>
             
             </div>

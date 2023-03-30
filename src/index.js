@@ -6,13 +6,21 @@ import reportWebVitals from './reportWebVitals';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AuthProvider from './components/Contexts/AuthProvider/AuthProvider';
+import {
+  QueryClient,
+  QueryClientProvider,
+  
+} from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
    <AuthProvider>
    <App />
-
-   <ToastContainer
+    <ToastContainer
     position="top-center"
     autoClose={2000}
     hideProgressBar={false}
@@ -27,6 +35,7 @@ root.render(
 
     </ToastContainer>
    </AuthProvider>
+   </QueryClientProvider>
   </React.StrictMode>
 );
 

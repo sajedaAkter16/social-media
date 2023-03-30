@@ -9,7 +9,6 @@ const PostBanner = () => {
   // const imgKey=process.env.REACT_APP_imgKey;
  
   const handlePost=data=>{
-    // conso/le.log(data.image[0])
     const image=data.image[0];
     const formData=new FormData();
     formData.append('image',image)
@@ -24,27 +23,18 @@ const PostBanner = () => {
      
        const image=imgData.data.display_url;
         const content=data.content
+        console.log(image,content)
         savePost(content,image)
       
      toast.success('Successfully posted')
       
+    }})
 
-      // fetch("http://localhost:5000/posts", {
-      //   method:'POST',
-      //   headers:{
-      //     "çontent-type":"application/json"
-      //   },
-      //   body:JSON.stringify(post)
-      // })
-      // .then(res=>res.json())
-      // .then(result=>{
-      //   console.log(result)
-      // })
-    }
-   
-   })
+    // all post are save to databse
+    .catch(err=>console.log(err))
    const savePost=(content,image)=>{
     const post={content,image};
+    
     fetch('http://localhost:5000/posts', {
       method:"POST",
       headers:{
