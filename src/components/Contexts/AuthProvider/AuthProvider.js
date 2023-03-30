@@ -25,11 +25,11 @@ const AuthProvider = ({ children }) => {
   };
 
   // update user
-  const updateUser = (name, image, number) => {
+  const updateUser = (name,number,image) => {
     return updateProfile(auth.currentUser, {
       displayName: name,
-      photoURL: image,
       phoneNumber: number,
+      photoURL: image,
     });
   };
   // const signin

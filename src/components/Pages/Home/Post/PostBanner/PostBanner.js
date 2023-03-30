@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 const PostBanner = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
-  const imgKey=process.env.REACT_APP_imgHostKey;
+  // const imgKey=process.env.REACT_APP_imgKey;
  
   const handlePost=data=>{
     // conso/le.log(data.image[0])
@@ -14,21 +14,49 @@ const PostBanner = () => {
     const formData=new FormData();
     formData.append('image',image)
     
-    fetch(`https://api.imgbb.com/1/upload?key=${imgKey}`,{
+    fetch('https://api.imgbb.com/1/upload?key=0ae9dba6e463457e8ea1da155e56d28d',{
       method:"POST",
       body:formData
     })
    .then(res=>res.json())
    .then(imgData=>{
     if(imgData.success){
-      const post={
-        image:imgData.data.url,
-        content:data.content
-      }
-      console.log(post)
+     
+       const image=imgData.data.display_url;
+        const content=data.content
+        savePost(content,image)
+      
+     toast.success('Successfully posted')
+      
+
+      // fetch("http://localhost:5000/posts", {
+      //   method:'POST',
+      //   headers:{
+      //     "çontent-type":"application/json"
+      //   },
+      //   body:JSON.stringify(post)
+      // })
+      // .then(res=>res.json())
+      // .then(result=>{
+      //   console.log(result)
+      // })
     }
    
    })
+   const savePost=(content,image)=>{
+    const post={content,image};
+    fetch('http://localhost:5000/posts', {
+      method:"POST",
+      headers:{
+        'content-type':'application/json'
+      },
+      body:JSON.stringify(post)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data)
+    })
+   }
 
   }
     return (

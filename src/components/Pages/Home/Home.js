@@ -6,7 +6,7 @@ const Home = () => {
         <div className="grid grid-cols-3 gap-4">
   <div>01</div>
   <div>
-    <Post/>
+    {/* <Post/> */}
     
   </div>
  

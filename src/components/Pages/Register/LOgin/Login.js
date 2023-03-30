@@ -57,15 +57,11 @@ const Login = () => {
               </label>
               <input
                 type="email"
-                {...register("email", { required: "Email is required" })}
+                {...register("email", {required:true })}
                 placeholder="Email"
                 className="input input-bordered"
               />
-              {/* {errors.email && (
-                <p role="alert" className="text-red-600">
-                  {errors.email?.message}
-                </p>
-              )} */}
+             
             </div>
             <div className="form-control">
               <label className="label">
@@ -74,7 +70,7 @@ const Login = () => {
               <input
                 type="password"
                 {...register("password", {
-                  required: "Password is required",
+                  required:true,
                   minLength: {
                     value: 6,
                     message: "Password must be 6 characters long",
@@ -101,8 +97,8 @@ const Login = () => {
             </div>
 
             <div className="form-control mt-6">
-              <div className="divider">OR</div>
-              <div className="grid grid-cols-2 gap-0">
+              <div className="divider ">OR</div>
+              <div className="">
                 <div className="border border-2 border-orange-900 p-2 rounded bg-slate-400 text-red-900 text-center text-xl mb-5 mr-4">
                   <button
                   onClick={googleSignIn}
@@ -110,9 +106,9 @@ const Login = () => {
                     GOOGLE
                   </button>
                 </div>
-                <div className="border border-2 border-orange-900 p-2 rounded bg-slate-400 text-red-900 text-center text-xl mb-5 mr-4">
+                {/* <div className="border border-2 border-orange-900 p-2 rounded bg-slate-400 text-red-900 text-center text-xl mb-5 mr-4">
                   <button>GITHUB</button>
-                </div>
+                </div> */}
               </div>
 
               <button className="btn btn-primary">Login</button>
