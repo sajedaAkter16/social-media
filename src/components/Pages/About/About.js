@@ -3,6 +3,8 @@ import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 import { useForm } from "react-hook-form";
 import { async } from "@firebase/util";
 import { toast } from "react-toastify";
+import { useQuery } from "@tanstack/react-query";
+import Profile from "./Profile/Profile";
 
 const About = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -20,12 +22,25 @@ const About = () => {
         .then(()=>{
             toast.success('Added user info')
         })
-        console.log(data)
+        
     }
+// http://localhost:5000/users
+const {data:abouts=[] } = useQuery({
+  queryKey: ['abouts'],
+  queryFn: () =>
+    fetch('http://localhost:5000/users')
+    .then((res) => res.json())
+    .then(data=>{
+      return data
+    })
+})
+
+
   const { user } = useContext(AuthContext);
   return (
     <div>
-      <div className="bg-slate-200 flex justify-items-center items-center	">
+      <div className="bg-slate-200 flex justify-between  items-center">
+      <div className=" flex justify-items-center items-center	">
         <div className="avatar ">
           <div className="w-20 rounded-full mx-6 mt-2">
             <img src={user?.photoURL} alt="" />
@@ -34,6 +49,8 @@ const About = () => {
         <div>
           <h3 className="text-red-900 text-3xl font-bold ">{user?.displayName}</h3>
         </div>
+      </div>
+     
       </div>
 
       <div class="grid grid-cols-2 gap-0">
@@ -59,12 +76,12 @@ const About = () => {
         </div>
         <div className="form-control">
     
-          <input type="text" {...register('current-address')} placeholder="Enter current address" className="input input-bordered" />
+          <input type="text" {...register('current_address')} placeholder="Enter current address" className="input input-bordered" />
         
         </div>
         <div className="form-control">
     
-          <input type="text" {...register('home-address')} placeholder="Enter home address" className="input input-bordered" />
+          <input type="text" {...register('home_address')} placeholder="Enter home address" className="input input-bordered" />
         
         </div>
         <div className="form-control">
@@ -87,7 +104,7 @@ const About = () => {
  
         <div className="form-control">
     
-          <input type="date" {...register('date of birth')} placeholder="Enter date of birth" className="input input-bordered" />
+          <input type="date" {...register('dateOfBirth')} placeholder="Enter date of birth" className="input input-bordered" />
         
         </div>
         <div className="form-control mt-6">
@@ -98,37 +115,14 @@ const About = () => {
   </div>
 </div>
         </div>
+        {
+          abouts.map(about=>
 
-        <div className=" w-4/5">
-            <div>
-            <div className="bg-slate-300">
-                <h3 className="text-xl">Name:</h3>
-            </div>
-            <div className="bg-slate-300">
-                <h3 className="text-xl">Email:</h3>
-            </div>
-            <div className="bg-slate-300">
-                <h3 className="text-xl">Current Address:</h3>
-            </div>
-            <div className="bg-slate-300">
-                <h3 className="text-xl">Home Address:</h3>
-            </div>
-            <div className="bg-slate-300">
-                <h3 className="text-xl">University:</h3>
-            </div>
-            <div className="bg-slate-300">
-                <h3 className="text-xl">Gender:</h3>
-            </div>
-            <div className="bg-slate-300">
-                <h3 className="text-xl">Date of birth:</h3>
-            </div>
-            <div className="bg-slate-300">
-                <h3 className="text-xl">Number:</h3>
-            </div>
-            
-            </div>
+            <Profile key={about._id} about={about}/>
 
-        </div>
+          )
+        }
+
       </div>
     </div>
   );
