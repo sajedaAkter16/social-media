@@ -4,9 +4,9 @@ import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import CommentShow from "./CommentShow/CommentShow";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
-const Media = () => {
+const Media = () => { 
   const { register, handleSubmit } = useForm();
   const { user } = useContext(AuthContext);
 
@@ -24,14 +24,15 @@ const Media = () => {
   function comment() {
     const comment = document.getElementById("comment");
     const newComment = comment.value;
-    console.log(newComment);
+
+
     const commentDetails={
       comment:newComment,
       commenter_name:user.displayName,
       commenter_image:user.photoURL
 
     }
-   console.log(commentDetails)
+
     fetch('http://localhost:5000/comments', {
       method:"POST",
       headers:{
@@ -50,11 +51,12 @@ const Media = () => {
     })
 
   }
-  // const handleComment=(data)=>{
+  function loveReaction(){
+    
+   
+   
 
-  //   console.log(data)
-
-  // }
+  }
   return (
     <div className="grid grid-cols-7 gap-4 ">
       <div className="col-start-3 col-end-6 ...">
@@ -88,16 +90,18 @@ const Media = () => {
             </figure>
             <div className="grid grid-cols-3 gap-2 p-1 my-2 mx-3 rounded bg-purple-200 text-xl">
               <div className="ml-5">
-                <span className="heart" id="heart">
+                {/* <span className="heart" id="heart"> */}
+                  <button id='heart' onClick={loveReaction}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
-                    className="w-9 h-9"
+                    className="w-9 h-9 "
                   >
                     <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
                   </svg>
-                </span>
+                  </button>
+                {/* </span> */}
               </div>
 
               <div>

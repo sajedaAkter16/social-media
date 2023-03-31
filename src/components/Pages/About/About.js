@@ -62,7 +62,7 @@ const {data:abouts=[] } = useQuery({
 {/* Put this part before </body> tag */}
 <input type="checkbox" id="about-modal" className="modal-toggle" />
 <div className="modal">
-  <div className="modal-box relative">
+  <div className="modal-box ">
     <label htmlFor="about-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
     <div className="card flex-shrink-0 w-full max-w-sm  bg-base-100">
       <form onSubmit={handleSubmit(handleInfo)} className="card-body">

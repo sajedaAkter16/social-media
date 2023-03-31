@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 
@@ -7,7 +8,9 @@ const PostBanner = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   // const imgKey=process.env.REACT_APP_imgKey;
- 
+ const location=useLocation();
+ const navigate=useNavigate();
+ const from=location.state?.from?.pathname || '/'
   const handlePost=data=>{
     const image=data.image[0];
     const formData=new FormData();
@@ -25,7 +28,7 @@ const PostBanner = () => {
         const content=data.content
         console.log(image,content)
         savePost(content,image)
-      
+      navigate(from,{replace:true})
      toast.success('Successfully posted')
       
     }})
@@ -50,27 +53,24 @@ const PostBanner = () => {
 
   }
     return (
-      <div className="hero min-h-screen bg-base-200">
-  <div className="hero-content flex-col lg:flex-row-reverse">
-    {/* <div className="text-center lg:text-left">
-      <h1 className="text-5xl font-bold">Login now!</h1>
-      <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-    </div> */}
-    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+      <div className="hero lg:h-full absolute left-0 top-0 ">
+  <div className="hero-content flex-col lg:flex-row-reverse  w-full">
+   
+    <div className="card flex-shrink-0 w-full  shadow-2xl border border-orange-200 bg-base-100 ">
       <form onSubmit={handleSubmit(handlePost)} className="card-body">
         <div className="form-control">
-        <textarea {...register('content')} className="textarea textarea-secondary  w-80 h-24" placeholder="What's your mind"></textarea>
+        <textarea {...register('content')} className="textarea textarea-secondary  w-full h-24" placeholder="What's your mind"></textarea>
         </div>
         <div className="form-control" >
         <div className="grid grid-cols-3 gap-2">
   <div>
     <p>Video</p>
   </div>
-  {/* <!-- ... --> */}
+ 
   <div >
   <input type="file" {...register('image')} placeholder="" className="input w-28 max-w-xs" />
   </div>
-  <div>09</div>
+  <div>Feeling</div>
 </div>
         </div>
         <div className="form-control mt-6">
