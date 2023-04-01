@@ -38,7 +38,7 @@ const PostBanner = () => {
    const savePost=(content,image)=>{
     const post={content,image};
     
-    fetch('http://localhost:5000/posts', {
+    fetch('https://social-media-server-eight-nu.vercel.app/posts', {
       method:"POST",
       headers:{
         'content-type':'application/json'
@@ -53,8 +53,8 @@ const PostBanner = () => {
 
   }
     return (
-      <div className="hero lg:h-full absolute left-0 top-0 ">
-  <div className="hero-content flex-col lg:flex-row-reverse  w-full">
+      <div className="hero ">
+  <div className="hero-content flex-col lg:flex-row-reverse  ">
    
     <div className="card flex-shrink-0 w-full  shadow-2xl border border-orange-200 bg-base-100 ">
       <form onSubmit={handleSubmit(handlePost)} className="card-body">

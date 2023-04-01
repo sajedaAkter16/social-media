@@ -7,7 +7,7 @@ const CommentShow = () => {
     const { data: comments = [] } = useQuery({
         queryKey: ["comments"],
         queryFn: () =>
-          fetch("http://localhost:5000/comments")
+          fetch("https://social-media-server-eight-nu.vercel.app/comments")
             .then((res) => res.json())
             .then((data) => {
                 console.log(data)

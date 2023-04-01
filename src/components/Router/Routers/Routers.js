@@ -39,7 +39,7 @@ export const router = createBrowserRouter([
       {
         path:'/update/:id',
         element:<UpdateModal/>,
-        loader:({params})=>fetch(`http://localhost:5000/users/${params.id}`)
+        loader:({params})=>fetch(`https://social-media-server-eight-nu.vercel.app/users/${params.id}`)
       },
       {
         path: "/login",
@@ -52,7 +52,7 @@ export const router = createBrowserRouter([
       {
         path:'/details/:id',
         element:<PrivateRoute><Details/></PrivateRoute>,
-        loader:({params})=>fetch(`http://localhost:5000/posts/${params.id}`)
+        loader:({params})=>fetch(`https://social-media-server-eight-nu.vercel.app/posts/${params.id}`)
       }
     ],
   },

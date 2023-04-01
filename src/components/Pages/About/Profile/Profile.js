@@ -4,16 +4,16 @@ import { Link } from "react-router-dom";
 const Profile = ({ about }) => {
   
   return (
-    <div>
-      <div>
+    <div className="bg-base-200">
+      <div className="ml-96 my-3 p-3">
        
 <Link to={`/update/${about._id}`}>
-<label htmlFor="update-modal" className="btn">open modal</label>
+<label htmlFor="update-modal" className="btn bg-orange-300 w-44">Edit Profile</label>
 </Link>
       </div>
-
-      <div className="bg-slate-300 w-full max-h-full">
-        <div>
+      <div className="card w-96  text-orange-900">
+  <div className="card-body">
+  <div>
           <div className="my-5">
             <h3 className="text-xl">Name:{about.name}</h3>
           </div>
@@ -39,7 +39,10 @@ const Profile = ({ about }) => {
             <h3 className="text-xl">Number:{about.number}</h3>
           </div>
         </div>
-      </div>
+  </div>
+</div>
+
+      
     </div>
   );
 };

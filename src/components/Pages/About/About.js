@@ -11,7 +11,7 @@ const About = () => {
 
     // user info add to database
     const handleInfo=(data)=>{
-        fetch('http://localhost:5000/users',{
+        fetch('https://social-media-server-eight-nu.vercel.app/users',{
             method:'POST',
             headers:{
                 'content-type':'application/json'
@@ -24,11 +24,11 @@ const About = () => {
         })
         
     }
-// http://localhost:5000/users
+// https://social-media-server-eight-nu.vercel.app/users
 const {data:abouts=[] } = useQuery({
   queryKey: ['abouts'],
   queryFn: () =>
-    fetch('http://localhost:5000/users')
+    fetch('https://social-media-server-eight-nu.vercel.app/users')
     .then((res) => res.json())
     .then(data=>{
       return data

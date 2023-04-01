@@ -50,24 +50,25 @@ const LeftSide = () => {
 </div>
 <div class="flex flex-col lg:text-2xl  p-2 m-2 rounded">
 <div className="divider">OR</div>
+<h1 className='font-bold my-2 text-center'>Your Shortcut</h1>
    <div className='flex  my-3 mr-5'>
-        <img src={cooking} alt='' className='w-20 h-20 rounded-md'/>
+        <img src={cooking} alt='' className='w-16 h-16 rounded-md'/>
         <p className='mt-5 ml-5'>Faiza's Cooking  </p>
    </div>
    <div className='flex  my-3'>
-        <img src={travel} alt='' className='w-20 h-20 rounded-md'/>
+        <img src={travel} alt='' className='w-16 h-16  rounded-md'/>
         <p className='mt-5 ml-5'>Bangladesh Travel</p>
    </div>
    <div className='flex  my-3'>
-        <img src={web} alt='' className='w-20 h-20 rounded-md'/>
+        <img src={web} alt='' className='w-16 h-16  rounded-md'/>
         <p className='mt-5 ml-5'>Hacking World</p>
    </div>
    <div className='flex  my-3'>
-        <img src={paint} alt='' className='w-20 h-20 rounded-md'/>
+        <img src={paint} alt='' className='w-16 h-16  rounded-md'/>
         <p className='mt-5 ml-5'>Paint Gallery</p>
    </div>
    <div className='flex  my-3'>
-        <img src={course} alt='' className='w-20 h-20 rounded-md'/>
+        <img src={course} alt='' className='w-16 h-16  rounded-md'/>
         <p className='mt-5 ml-5'>English Spoken</p>
    </div>
 </div>

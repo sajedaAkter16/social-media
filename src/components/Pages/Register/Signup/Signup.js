@@ -53,7 +53,7 @@ const Signup = () => {
   //  const saveUser=(email,name)=>{
   //   const user={email,name};
 
-  //   fetch('http://localhost:5000/users', {
+  //   fetch('https://social-media-server-eight-nu.vercel.app/users', {
   //     method:"POST",
   //     headers:{
   //       'content-type':'application/json'

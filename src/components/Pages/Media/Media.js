@@ -13,7 +13,7 @@ const Media = () => {
   const { data: posts = [] } = useQuery({
     queryKey: ["posts"],
     queryFn: () =>
-      fetch("http://localhost:5000/posts")
+      fetch("https://social-media-server-eight-nu.vercel.app/posts")
         .then((res) => res.json())
         .then((data) => {
           return data;
@@ -33,7 +33,7 @@ const Media = () => {
 
     }
 
-    fetch('http://localhost:5000/comments', {
+    fetch('https://social-media-server-eight-nu.vercel.app/comments', {
       method:"POST",
       headers:{
         'content-type':'application/json'
@@ -52,7 +52,7 @@ const Media = () => {
 
   }
   function loveReaction(){
-    
+
    
    
 
@@ -61,7 +61,7 @@ const Media = () => {
     <div className="grid grid-cols-7 gap-4 ">
       <div className="col-start-3 col-end-6 ...">
         {posts.map((post) => (
-          <div className=" relative card w-full my-4 bg-base-100 shadow-xl border border-2 border-red-200">
+          <div className=" h-fit card w-full my-4 bg-base-100 shadow-xl border border-2 border-red-200">
             <div className="card-body">
               <div className="flex">
                 {user?.uid ? (
